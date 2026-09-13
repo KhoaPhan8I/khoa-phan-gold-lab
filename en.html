@@ -4,11 +4,9 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Khoa Phan Gold Lab — Rule-first Gold MT5 EAs</title>
-<meta name="description" content="Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready."/>
+<meta name="description" content="Free → Telegram → Rental/Pro. Rule-first Gold MT5. Broker-real. No fairy tales."/>
 <meta property="og:title" content="Khoa Phan Gold Lab"/>
-<meta property="og:description" content="Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready."/>
-<meta property="og:type" content="website"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<meta property="og:description" content="Rule-first · Broker-real · No fairy tales"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -134,125 +132,175 @@ a{color:inherit; text-decoration:none}
   .nav-links{display:none}
   .panel{min-height:360px}
 }
+
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tier{border:1px solid var(--line);border-radius:22px;padding:22px;background:rgba(255,255,255,.02);position:relative}
+.tier.featured{border-color:rgba(232,197,71,.55);box-shadow:0 0 0 1px rgba(232,197,71,.2), var(--shadow)}
+.tier .ribbon{position:absolute;top:14px;right:14px;font-size:11px;font-weight:800;color:#111;background:var(--gold);padding:4px 8px;border-radius:999px}
+.tier h3{margin:0 0 6px;font-size:1.2rem}
+.tier .amt{font-size:2rem;font-weight:800;letter-spacing:-.03em;margin:10px 0}
+.tier .amt small{font-size:.95rem;color:var(--muted);font-weight:600}
+.tier ul{margin:0 0 18px;padding-left:1.1rem;color:var(--muted)}
+.tier li{margin:8px 0}
+.req{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch}
+.req-box,.onboard{border:1px solid var(--line);border-radius:22px;padding:22px;background:rgba(255,255,255,.02)}
+.onboard ol{margin:0;padding-left:1.2rem;color:var(--muted)}
+.onboard li{margin:10px 0}
+@media (max-width:900px){.tiers,.req{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-  <header class="nav"><div class="container nav-inner">
-    <a class="brand" href="#top"><span class="logo"></span> Khoa Phan Gold Lab</a>
-    <nav class="nav-links">
-      <a href="#products">Products</a>
-      <a href="#flow">Funnel</a>
-      <a href="#questions">Checklist</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="nav-cta">
-      <a class="lang" href="index.html">VI</a>
-      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
+<header class="nav"><div class="container nav-inner">
+  <a class="brand" href="#top"><span class="logo"></span> Khoa Phan Gold Lab</a>
+  <nav class="nav-links">
+    <a href="#pricing">Pricing</a>
+    <a href="#products">Products</a>
+    <a href="#flow">Funnel</a>
+    <a href="#install">Setup</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="lang" href="index.html">VI</a>
+    <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
+  </div>
+</div></header>
+
+<main id="top" class="container">
+<section class="hero">
+  <div>
+    <div class="badge">Rule-first · Broker-real</div>
+    <h1>Gold MT5 EAs<br>without the <em>fairy tales</em></h1>
+    <p class="lead">Learned from top EA sellers: Free/lite for leads → Telegram nurture → clear Rental/Pro. We do that — <strong>without invented results</strong>.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram Lab</a>
+      <a class="btn btn-ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">Seller MQL5</a>
+      <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free Scalper</a>
     </div>
-  </div></header>
-
-  <main id="top" class="container">
-    <section class="hero">
-      <div>
-        <div class="badge">Rule-first · Broker-real</div>
-        <h1>Gold MT5 EAs<br>without the <em>fairy tales</em></h1>
-        <p class="lead">Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
-          <a class="btn btn-ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5 Seller</a>
-          <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free Scalper</a>
-        </div>
-        <div class="trust">
-          <div><strong>✓</strong> No profit promises</div>
-          <div><strong>✓</strong> Funnel Free→Pro</div>
-          <div><strong>✓</strong> Hub ngoài Market</div>
-        </div>
-      </div>
-      <div class="panel" aria-hidden="true">
-        <div class="panel-top"><div class="dots"><i></i><i></i><i></i></div><span>XAUUSD · rule checklist</span></div>
-        <div class="chart"><div class="candles"><span class="" style="height:40%"></span><span class="down" style="height:55%"></span><span class="" style="height:35%"></span><span class="" style="height:70%"></span><span class="down" style="height:48%"></span><span class="" style="height:82%"></span><span class="" style="height:60%"></span><span class="down" style="height:45%"></span><span class="" style="height:78%"></span><span class="" style="height:52%"></span><span class="down" style="height:88%"></span><span class="" style="height:66%"></span><span class="" style="height:42%"></span><span class="down" style="height:74%"></span><span class="" style="height:58%"></span><span class="" style="height:90%"></span><span class="down" style="height:50%"></span><span class="" style="height:68%"></span><span class="" style="height:84%"></span><span class="down" style="height:56%"></span></div></div>
-        <div class="stats">
-          <div class="stat"><b>Spread check</b><strong>NFP/FOMC</strong></div>
-          <div class="stat"><b>Risk/trade</b><strong>Fixed %</strong></div>
-          <div class="stat"><b>Logic</b><strong>Rule-first</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="products">
-      <h2>Three hero tools</h2>
-      <p class="sub">Market EAs only via the official MQL5 seller — this site is the marketing hub.</p>
-      <div class="grid3"><article class="card">
-      <div class="tag">Scalper confluence</div>
-      <h3>Multi Indicator Gold Scalper</h3>
-      <p>Learn order behavior on Free, tighten execution on Pro.</p>
-      <div class="price"><span>Free → ~$39 rent → $199</span></div>
-      <div class="cta-row" style="margin:8px 0 0">
-        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free</a>
-        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194380">Pro</a>
-      </div>
-    </article><article class="card">
-      <div class="tag">OCO breakout</div>
-      <h3>Breakout BuyStop SellStop</h3>
-      <p>One side fills — cancel the other. Rules before vibes.</p>
-      <div class="price"><span>Free → ~$39 rent → $199</span></div>
-      <div class="cta-row" style="margin:8px 0 0">
-        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187934">Free</a>
-        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194385">Pro</a>
-      </div>
-    </article><article class="card">
-      <div class="tag">EMA trend</div>
-      <h3>EMA Breakout Trend Hunter</h3>
-      <p>EMA trend/breakout with explicit risk.</p>
-      <div class="price"><span>Free → ~$49 rent → $249</span></div>
-      <div class="cta-row" style="margin:8px 0 0">
-        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187084">Free</a>
-        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194387">Pro</a>
-      </div>
-    </article></div>
-    </section>
-
-    <section class="section" id="flow">
-      <h2>Clear path in</h2>
-      <p class="sub">No shortcuts. Demo on your real broker before you pay.</p>
-      <div class="steps"><div class="step"><div class="n">01</div><h3>Free MQL5</h3><p>Install Free, demo on your account type.</p></div><div class="step"><div class="n">02</div><h3>Telegram</h3><p>Daily rule-first checklist & tips.</p></div><div class="step"><div class="n">03</div><h3>Rental</h3><p>30-day rental when Market allows.</p></div><div class="step"><div class="n">04</div><h3>Pro</h3><p>Go Pro after broker-real checks pass.</p></div></div>
-    </section>
-
-    <section class="section" id="questions">
-      <h2>3 questions before you buy</h2>
-      <p class="sub">Borrowed from top fintech landings: be specific, prove with a checklist, one clear CTA path.</p>
-      <div class="grid3"><div class="step"><div class="n">01</div><h3>News-time spread on YOUR broker?</h3><p>Answer this on your broker before you buy.</p></div><div class="step"><div class="n">02</div><h3>Fixed risk % per trade?</h3><p>Answer this on your broker before you buy.</p></div><div class="step"><div class="n">03</div><h3>Rule-first logic — or unexplained magic?</h3><p>Answer this on your broker before you buy.</p></div></div>
-      <div class="cta-row" style="margin-top:22px">
-        <a class="btn btn-primary" href="checklist.html">Open full checklist</a>
-        <a class="btn btn-ghost" href="https://khoaphan8i.github.io/khoa-phan-gold-lab/checklist.html">Share link</a>
-      </div>
-    </section>
-
-    <section class="section faq" id="faq">
-      <h2>FAQ</h2>
-      <details open>
-        <summary>Do you sell EA files off MQL5?</summary>
-        <p>No. Market binaries only via the MQL5 seller. This hub routes Free/Telegram/Rental/Pro.</p>
-      </details>
-      <details>
-        <summary>Profit guarantees?</summary>
-        <p>Never. Rule-first · Broker-real · No fairy tales.</p>
-      </details>
-      <details>
-        <summary>Where do I start?</summary>
-        <p>Free Scalper → Telegram checklist → Seller when ready.</p>
-      </details>
-      <div class="warn">No profit promises. We do not redistribute Market .ex5 off-platform. Demo first — pay later.</div>
-    </section>
-  </main>
-
-  <footer class="container foot">
-    <div>© Khoa Phan Gold Lab · khoaphan0511 · Phan Van Khoa</div>
-    <div>
-      <a href="https://t.me/khoa_phan_ea_mt5_1">Telegram</a> ·
-      <a href="https://x.com/khoaphanmql5">X</a> ·
-      <a href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5</a>
+    <div class="trust">
+      <div><strong>✓</strong> Published on MQL5 Market</div>
+      <div><strong>✓</strong> Free → Rental → Pro</div>
+      <div><strong>✓</strong> No profit promises</div>
     </div>
-  </footer>
-</body>
-</html>
+  </div>
+  <div class="panel" aria-hidden="true">
+    <div class="panel-top"><div class="dots"><i></i><i></i><i></i></div><span>XAUUSD · rule checklist</span></div>
+    <div class="chart"><div class="candles">
+      <span class="" style="height:40%"></span><span class="down" style="height:55%"></span><span class="" style="height:35%"></span><span class="" style="height:70%"></span><span class="down" style="height:48%"></span><span class="" style="height:82%"></span><span class="" style="height:60%"></span><span class="down" style="height:45%"></span><span class="" style="height:78%"></span><span class="" style="height:52%"></span><span class="down" style="height:88%"></span><span class="" style="height:66%"></span><span class="" style="height:42%"></span><span class="down" style="height:74%"></span><span class="" style="height:58%"></span><span class="" style="height:90%"></span><span class="down" style="height:50%"></span><span class="" style="height:68%"></span><span class="" style="height:84%"></span><span class="down" style="height:56%"></span>
+    </div></div>
+    <div class="stats">
+      <div class="stat"><b>Spread check</b><strong>NFP/FOMC</strong></div>
+      <div class="stat"><b>Risk/trade</b><strong>Fixed %</strong></div>
+      <div class="stat"><b>Logic</b><strong>Rule-first</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <h2>Clear pricing like top sellers</h2>
+  <p class="sub">Common playbook: Free lite → monthly rental → Pro/full. Market binaries only via MQL5.</p>
+  <div class="tiers">
+    <div class="tier">
+      <h3>Free</h3>
+      <div class="amt">$0 <small>on MQL5</small></div>
+      <ul>
+        <li>Learn fills / spread rejects</li>
+        <li>Demo on your broker</li>
+        <li>No profit claims</li>
+      </ul>
+      <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Get Free Scalper</a>
+    </div>
+    <div class="tier featured">
+      <div class="ribbon">Popular</div>
+      <h3>Rental 30 ngày</h3>
+      <div class="amt">~$39–49 <small>/30d</small></div>
+      <ul>
+        <li>When Market rentals enabled</li>
+        <li>Live test before full buy</li>
+        <li>Scalper/Breakout ~$39 · EMA ~$49</li>
+      </ul>
+      <a class="btn btn-primary" href="https://www.mql5.com/en/users/khoaphan0511/seller">Open seller</a>
+    </div>
+    <div class="tier">
+      <h3>Pro</h3>
+      <div class="amt">$199–249 <small>one-time</small></div>
+      <ul>
+        <li>Full tool + listing updates</li>
+        <li>After Free/Rental looks sane live</li>
+        <li>Telegram Lab support tips</li>
+      </ul>
+      <a class="btn btn-ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">Pro on MQL5</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <h2>Three hero tools</h2>
+  <p class="sub">Like competitors: one rule line + Free/Pro CTAs per product.</p>
+  <div class="grid3">
+    <article class="card"><div class="tag">Scalper</div><h3>Multi Indicator Gold Scalper</h3><p>Confluence scalper — Free to learn fills, Pro to tighten execution.</p><div class="price"><span>Free → ~$39 → $199</span></div><div class="cta-row" style="margin-top:8px"><a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free</a><a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194380">Pro</a></div></article>
+    <article class="card"><div class="tag">OCO</div><h3>Breakout BuyStop SellStop</h3><p>OCO: one side fills — cancel the other.</p><div class="price"><span>Free → ~$39 → $199</span></div><div class="cta-row" style="margin-top:8px"><a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187934">Free</a><a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194385">Pro</a></div></article>
+    <article class="card"><div class="tag">EMA</div><h3>EMA Breakout Trend Hunter</h3><p>EMA trend/breakout with explicit risk.</p><div class="price"><span>Free → ~$49 → $249</span></div><div class="cta-row" style="margin-top:8px"><a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187084">Free</a><a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194387">Pro</a></div></article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Broker & risk (top sellers state this)</h2>
+  <div class="req">
+    <div class="req-box">
+      <h3>Real requirements</h3>
+      <ul style="color:var(--muted);padding-left:1.1rem">
+        <li>Prefer ECN/Raw — measure NFP/FOMC spread on your account type</li>
+        <li>Fixed % risk per trade — no all-in vibes</li>
+        <li>VPS if you want 24/5 uptime</li>
+        <li>Prop mindset: Prop ≠ pass</li>
+      </ul>
+      <a class="btn btn-ghost" href="checklist.html" style="margin-top:12px">Checklist</a>
+    </div>
+    <div class="onboard">
+      <h3>After Free download</h3>
+      <ol>
+        <li>Install Free on MT5 demo</li>
+        <li>Join Telegram Lab</li>
+        <li>Run broker-real checklist</li>
+        <li>Rental/Pro on seller when ready</li>
+      </ol>
+      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1" style="margin-top:14px">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="install">
+  <h2>Install in 4 steps</h2>
+  <p class="sub">Gold Scalpers-style friction killer.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Get Free/Pro</h3><p>From the official MQL5 seller.</p></div>
+    <div class="step"><div class="n">02</div><h3>Attach XAUUSD</h3><p>Experts folder → drag to chart.</p></div>
+    <div class="step"><div class="n">03</div><h3>Algo Trading</h3><p>Enable Allow Algo Trading.</p></div>
+    <div class="step"><div class="n">04</div><h3>Join Telegram Lab</h3><p>Checklist + rule-first tips.</p></div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <h2>Industry funnel</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Free MQL5</h3><p>Leads + real learning</p></div>
+    <div class="step"><div class="n">02</div><h3>Telegram</h3><p>Nurture + support</p></div>
+    <div class="step"><div class="n">03</div><h3>Rental</h3><p>Low-cost trial</p></div>
+    <div class="step"><div class="n">04</div><h3>Pro</h3><p>Full when broker-real OK</p></div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <h2>FAQ</h2>
+  <details open><summary>Sell .ex5 off MQL5?</summary><p>No. Market binaries only via MQL5 seller. Hub = marketing + Telegram Lab.</p></details>
+  <details><summary>Profit or prop-pass guarantees?</summary><p>No. Prop ≠ pass. Demo first.</p></details>
+  <details><summary>Competitors use rental + Telegram — do you?</summary><p>Yes: Free → Telegram Lab → Rental/Pro on MQL5. Rentals when Market allows.</p></details>
+  <div class="warn">No profit promises. No off-platform Market .ex5 redistribution. Demo first — pay later.</div>
+</section>
+</main>
+
+<footer class="container foot">
+  <div>© Khoa Phan Gold Lab · khoaphan0511</div>
+  <div><a href="https://t.me/khoa_phan_ea_mt5_1">Telegram</a> · <a href="https://x.com/khoaphanmql5">X</a> · <a href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5</a></div>
+</footer>
+</body></html>
