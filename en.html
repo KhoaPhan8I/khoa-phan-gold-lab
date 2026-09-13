@@ -1,57 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Khoa Phan Gold Lab — Rule-first Gold MT5 EAs</title>
-  <meta name="description" content="Rule-first Gold MT5 EAs. Free → Rental → Pro. Broker-real. No fairy tales." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style>
-    :root { --bg:#07070c; --card:#12121a; --gold:#e8c547; --text:#f2f2f5; --muted:#9a9aa8; --line:#2a2a36; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: Inter, system-ui, sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
-    .badge { display:inline-block; padding:8px 14px; border-radius:999px; border:1px solid rgba(232,197,71,.45); color:var(--gold); font-size:13px; font-weight:600; }
-    h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 18px 0 10px; letter-spacing:-.03em; }
-    h1 span { color: var(--gold); }
-    .lead { color: var(--muted); font-size: 1.15rem; max-width: 40rem; }
-    .cta-row { display:flex; flex-wrap:wrap; gap:12px; margin: 28px 0 40px; }
-    a.btn { display:inline-block; padding:14px 18px; border-radius:12px; background:var(--gold); color:#111; text-decoration:none; font-weight:800; }
-    a.ghost { background:transparent; border:1px solid var(--gold); color:var(--gold); }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; }
-    .card h2 { margin:0 0 8px; font-size:1.15rem; }
-    .card p { margin:0; color:var(--muted); }
-    .price { margin-top:12px; color:var(--gold); font-weight:700; }
-    footer { margin-top: 56px; color: var(--muted); font-size: .9rem; border-top:1px solid var(--line); padding-top: 24px; }
-    .warn { margin-top: 24px; padding: 14px 16px; border-radius: 12px; background:#16140a; border:1px solid rgba(232,197,71,.35); color:#d8d0b0; }
-    .lang { float:right; color:var(--gold); text-decoration:none; font-weight:600; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Khoa Phan Gold Lab — Rule-first Gold MT5 EAs</title>
+<meta name="description" content="Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready."/>
+<meta property="og:title" content="Khoa Phan Gold Lab"/>
+<meta property="og:description" content="Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07080c; --bg2:#0c0e14; --card:rgba(255,255,255,.03);
+  --line:rgba(255,255,255,.08); --text:#f4f4f6; --muted:#9aa0b4;
+  --gold:#e8c547; --gold2:#f0d56a; --ok:#3dd68c;
+  --shadow:0 30px 80px rgba(0,0,0,.45);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+  background:radial-gradient(1200px 600px at 70% -10%, rgba(232,197,71,.12), transparent 55%),
+             radial-gradient(900px 500px at 10% 20%, rgba(80,100,255,.08), transparent 50%),
+             var(--bg);
+  color:var(--text); line-height:1.55; overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none}
+.container{width:min(1120px, calc(100% - 40px)); margin:0 auto}
+.nav{
+  position:sticky; top:0; z-index:50; backdrop-filter:blur(16px);
+  background:rgba(7,8,12,.72); border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em}
+.logo{
+  width:34px; height:34px; border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#8a6a10);
+  box-shadow:0 0 0 1px rgba(232,197,71,.35), 0 8px 24px rgba(232,197,71,.25);
+}
+.nav-links{display:flex; gap:18px; color:var(--muted); font-size:14px; font-weight:600}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:flex; gap:10px; align-items:center}
+.lang{font-size:13px; color:var(--gold); font-weight:700; padding:8px 10px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 18px; border-radius:999px; font-weight:800; font-size:14px;
+  border:1px solid transparent; transition:.2s ease; cursor:pointer;
+}
+.btn-primary{background:linear-gradient(180deg,var(--gold2),var(--gold)); color:#111}
+.btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 30px rgba(232,197,71,.25)}
+.btn-ghost{border-color:var(--line); color:var(--text); background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:rgba(232,197,71,.45); color:var(--gold)}
+.hero{padding:72px 0 40px; display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center}
+.badge{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  border:1px solid rgba(232,197,71,.35); background:rgba(232,197,71,.08);
+  color:var(--gold); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+}
+.hero h1{
+  margin:18px 0 14px; font-size:clamp(2.4rem, 5vw, 4rem); line-height:1.05;
+  letter-spacing:-.045em; font-weight:800;
+}
+.hero h1 em{font-style:normal; color:var(--gold)}
+.lead{color:var(--muted); font-size:1.1rem; max-width:34rem; margin:0 0 26px}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:22px}
+.trust{display:flex; flex-wrap:wrap; gap:14px 22px; color:var(--muted); font-size:13px}
+.trust strong{color:var(--text)}
+.panel{
+  position:relative; border:1px solid var(--line); border-radius:28px; background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));
+  box-shadow:var(--shadow); overflow:hidden; min-height:420px;
+}
+.panel::before{
+  content:""; position:absolute; inset:-40% -20% auto auto; width:320px; height:320px;
+  background:radial-gradient(circle, rgba(232,197,71,.18), transparent 70%); pointer-events:none;
+}
+.panel-top{display:flex; justify-content:space-between; align-items:center; padding:16px 18px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; font-weight:600}
+.dots{display:flex; gap:6px}
+.dots i{width:8px; height:8px; border-radius:50%; background:#2a2f3d; display:block}
+.dots i:nth-child(1){background:#ff5f57}
+.dots i:nth-child(2){background:#febc2e}
+.dots i:nth-child(3){background:#28c840}
+.chart{padding:18px; height:280px; position:relative}
+.candles{display:flex; align-items:flex-end; gap:8px; height:100%; padding-bottom:24px}
+.candles span{
+  flex:1; border-radius:4px 4px 2px 2px; background:linear-gradient(180deg, rgba(232,197,71,.95), rgba(232,197,71,.35));
+  position:relative; opacity:.9;
+}
+.candles span::after{
+  content:""; position:absolute; left:50%; transform:translateX(-50%); width:2px; background:rgba(232,197,71,.55);
+  top:-18%; bottom:-12%;
+}
+.candles span.down{background:linear-gradient(180deg, rgba(120,140,180,.8), rgba(70,80,110,.35))}
+.candles span.down::after{background:rgba(140,160,200,.45)}
+.stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:0 18px 18px}
+.stat{border:1px solid var(--line); border-radius:14px; padding:12px; background:rgba(0,0,0,.2)}
+.stat b{display:block; font-size:13px; color:var(--muted); font-weight:600}
+.stat strong{font-size:18px; letter-spacing:-.02em}
+.section{padding:70px 0}
+.section h2{font-size:clamp(1.6rem, 3vw, 2.3rem); letter-spacing:-.03em; margin:0 0 10px}
+.section .sub{color:var(--muted); max-width:40rem; margin:0 0 28px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.card{
+  border:1px solid var(--line); border-radius:var(--radius); background:var(--card);
+  padding:22px; display:flex; flex-direction:column; gap:10px; min-height:100%;
+  transition:.2s ease;
+}
+.card:hover{border-color:rgba(232,197,71,.35); transform:translateY(-2px)}
+.card .tag{font-size:12px; font-weight:700; color:var(--gold)}
+.card h3{margin:0; font-size:1.15rem; letter-spacing:-.02em}
+.card p{margin:0; color:var(--muted); font-size:.95rem; flex:1}
+.price{font-weight:800; color:var(--text)}
+.price span{color:var(--gold)}
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.step{border:1px solid var(--line); border-radius:18px; padding:18px; background:rgba(255,255,255,.02)}
+.step .n{width:28px; height:28px; border-radius:9px; display:grid; place-items:center; background:rgba(232,197,71,.12); color:var(--gold); font-weight:800; font-size:13px; margin-bottom:10px}
+.step h3{margin:0 0 6px; font-size:1rem}
+.step p{margin:0; color:var(--muted); font-size:.9rem}
+.faq details{border:1px solid var(--line); border-radius:16px; padding:14px 16px; background:rgba(255,255,255,.02); margin-bottom:10px}
+.faq summary{cursor:pointer; font-weight:700}
+.faq p{color:var(--muted); margin:10px 0 0}
+.foot{
+  border-top:1px solid var(--line); padding:28px 0 50px; color:var(--muted); font-size:13px;
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between;
+}
+.warn{
+  margin-top:18px; padding:14px 16px; border-radius:16px;
+  border:1px solid rgba(232,197,71,.28); background:rgba(232,197,71,.06); color:#d9d0ad; font-size:.92rem;
+}
+@media (max-width:900px){
+  .hero,.grid3,.steps{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .panel{min-height:360px}
+}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="lang" href="index.html">VI</a>
-    <div class="badge">KHOA PHAN GOLD LAB</div>
-    <h1>Rule-first Gold MT5 EAs<br/><span>Broker-real · No fairy tales</span></h1>
-    <p class="lead">Clear rules beat pretty backtests. Start Free on MQL5, learn on Telegram, then Rental/Pro when your broker-real checklist passes.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
-      <a class="btn ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5 Seller</a>
-      <a class="btn ghost" href="https://www.mql5.com/en/market/product/187881">Free Scalper</a>
+  <header class="nav"><div class="container nav-inner">
+    <a class="brand" href="#top"><span class="logo"></span> Khoa Phan Gold Lab</a>
+    <nav class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#flow">Funnel</a>
+      <a href="#questions">Checklist</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="lang" href="index.html">VI</a>
+      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
     </div>
-    <div class="grid">
-      <div class="card"><h2>Multi Indicator Gold Scalper</h2><p>Confluence scalper workflow.</p><div class="price">Free → ~$39 rent → $199 Pro</div>
-        <div class="cta-row" style="margin:14px 0 0"><a class="btn ghost" href="https://www.mql5.com/en/market/product/187881">Free</a><a class="btn ghost" href="https://www.mql5.com/en/market/product/194380">Pro</a></div></div>
-      <div class="card"><h2>Breakout BuyStop SellStop</h2><p>OCO breakout: one side fills, cancel the other.</p><div class="price">Free → ~$39 rent → $199 Pro</div>
-        <div class="cta-row" style="margin:14px 0 0"><a class="btn ghost" href="https://www.mql5.com/en/market/product/187934">Free</a><a class="btn ghost" href="https://www.mql5.com/en/market/product/194385">Pro</a></div></div>
-      <div class="card"><h2>EMA Breakout Trend Hunter</h2><p>EMA trend/breakout with explicit risk.</p><div class="price">Free → ~$49 rent → $249 Pro</div>
-        <div class="cta-row" style="margin:14px 0 0"><a class="btn ghost" href="https://www.mql5.com/en/market/product/187084">Free</a><a class="btn ghost" href="https://www.mql5.com/en/market/product/194387">Pro</a></div></div>
+  </div></header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div>
+        <div class="badge">Rule-first · Broker-real</div>
+        <h1>Gold MT5 EAs<br>without the <em>fairy tales</em></h1>
+        <p class="lead">Measure news-time spread. Fixed risk %. Explainable rules. Free on MQL5 → Telegram → Rental/Pro when ready.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Join Telegram</a>
+          <a class="btn btn-ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5 Seller</a>
+          <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free Scalper</a>
+        </div>
+        <div class="trust">
+          <div><strong>✓</strong> No profit promises</div>
+          <div><strong>✓</strong> Funnel Free→Pro</div>
+          <div><strong>✓</strong> Hub ngoài Market</div>
+        </div>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-top"><div class="dots"><i></i><i></i><i></i></div><span>XAUUSD · rule checklist</span></div>
+        <div class="chart"><div class="candles"><span class="" style="height:40%"></span><span class="down" style="height:55%"></span><span class="" style="height:35%"></span><span class="" style="height:70%"></span><span class="down" style="height:48%"></span><span class="" style="height:82%"></span><span class="" style="height:60%"></span><span class="down" style="height:45%"></span><span class="" style="height:78%"></span><span class="" style="height:52%"></span><span class="down" style="height:88%"></span><span class="" style="height:66%"></span><span class="" style="height:42%"></span><span class="down" style="height:74%"></span><span class="" style="height:58%"></span><span class="" style="height:90%"></span><span class="down" style="height:50%"></span><span class="" style="height:68%"></span><span class="" style="height:84%"></span><span class="down" style="height:56%"></span></div></div>
+        <div class="stats">
+          <div class="stat"><b>Spread check</b><strong>NFP/FOMC</strong></div>
+          <div class="stat"><b>Risk/trade</b><strong>Fixed %</strong></div>
+          <div class="stat"><b>Logic</b><strong>Rule-first</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <h2>Three hero tools</h2>
+      <p class="sub">Market EAs only via the official MQL5 seller — this site is the marketing hub.</p>
+      <div class="grid3"><article class="card">
+      <div class="tag">Scalper confluence</div>
+      <h3>Multi Indicator Gold Scalper</h3>
+      <p>Learn order behavior on Free, tighten execution on Pro.</p>
+      <div class="price"><span>Free → ~$39 rent → $199</span></div>
+      <div class="cta-row" style="margin:8px 0 0">
+        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free</a>
+        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194380">Pro</a>
+      </div>
+    </article><article class="card">
+      <div class="tag">OCO breakout</div>
+      <h3>Breakout BuyStop SellStop</h3>
+      <p>One side fills — cancel the other. Rules before vibes.</p>
+      <div class="price"><span>Free → ~$39 rent → $199</span></div>
+      <div class="cta-row" style="margin:8px 0 0">
+        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187934">Free</a>
+        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194385">Pro</a>
+      </div>
+    </article><article class="card">
+      <div class="tag">EMA trend</div>
+      <h3>EMA Breakout Trend Hunter</h3>
+      <p>EMA trend/breakout with explicit risk.</p>
+      <div class="price"><span>Free → ~$49 rent → $249</span></div>
+      <div class="cta-row" style="margin:8px 0 0">
+        <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187084">Free</a>
+        <a class="btn btn-primary" href="https://www.mql5.com/en/market/product/194387">Pro</a>
+      </div>
+    </article></div>
+    </section>
+
+    <section class="section" id="flow">
+      <h2>Clear path in</h2>
+      <p class="sub">No shortcuts. Demo on your real broker before you pay.</p>
+      <div class="steps"><div class="step"><div class="n">01</div><h3>Free MQL5</h3><p>Install Free, demo on your account type.</p></div><div class="step"><div class="n">02</div><h3>Telegram</h3><p>Daily rule-first checklist & tips.</p></div><div class="step"><div class="n">03</div><h3>Rental</h3><p>30-day rental when Market allows.</p></div><div class="step"><div class="n">04</div><h3>Pro</h3><p>Go Pro after broker-real checks pass.</p></div></div>
+    </section>
+
+    <section class="section" id="questions">
+      <h2>3 questions before you buy</h2>
+      <p class="sub">Borrowed from top fintech landings: be specific, prove with a checklist, one clear CTA path.</p>
+      <div class="grid3"><div class="step"><div class="n">01</div><h3>News-time spread on YOUR broker?</h3><p>Answer this on your broker before you buy.</p></div><div class="step"><div class="n">02</div><h3>Fixed risk % per trade?</h3><p>Answer this on your broker before you buy.</p></div><div class="step"><div class="n">03</div><h3>Rule-first logic — or unexplained magic?</h3><p>Answer this on your broker before you buy.</p></div></div>
+      <div class="cta-row" style="margin-top:22px">
+        <a class="btn btn-primary" href="checklist.html">Open full checklist</a>
+        <a class="btn btn-ghost" href="https://khoaphan8i.github.io/khoa-phan-gold-lab/checklist.html">Share link</a>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <h2>FAQ</h2>
+      <details open>
+        <summary>Do you sell EA files off MQL5?</summary>
+        <p>No. Market binaries only via the MQL5 seller. This hub routes Free/Telegram/Rental/Pro.</p>
+      </details>
+      <details>
+        <summary>Profit guarantees?</summary>
+        <p>Never. Rule-first · Broker-real · No fairy tales.</p>
+      </details>
+      <details>
+        <summary>Where do I start?</summary>
+        <p>Free Scalper → Telegram checklist → Seller when ready.</p>
+      </details>
+      <div class="warn">No profit promises. We do not redistribute Market .ex5 off-platform. Demo first — pay later.</div>
+    </section>
+  </main>
+
+  <footer class="container foot">
+    <div>© Khoa Phan Gold Lab · khoaphan0511 · Phan Van Khoa</div>
+    <div>
+      <a href="https://t.me/khoa_phan_ea_mt5_1">Telegram</a> ·
+      <a href="https://x.com/khoaphanmql5">X</a> ·
+      <a href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5</a>
     </div>
-    <div class="card" style="margin-top:28px"><h2>3 questions before you buy any Gold EA</h2>
-      <ol style="color:var(--muted)"><li>News-time spread on YOUR broker?</li><li>Fixed risk % per trade?</li><li>Rule-first logic — or unexplained magic?</li></ol>
-    </div>
-    <div class="warn">No profit promises. Demo on the same account type first. Market EAs only via the official MQL5 seller page — we do not redistribute .ex5 off-platform.</div>
-    <footer>Phan Van Khoa · khoaphan0511 · <a href="index.html" style="color:var(--gold)">Tiếng Việt</a></footer>
-  </div>
+  </footer>
 </body>
 </html>
