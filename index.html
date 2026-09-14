@@ -18,7 +18,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
+body{padding-bottom:88px;
   margin:0; font-family:Inter,ui-sans-serif,system-ui,sans-serif;
   background:radial-gradient(1200px 600px at 70% -10%, rgba(232,197,71,.12), transparent 55%),
              radial-gradient(900px 500px at 10% 20%, rgba(80,100,255,.08), transparent 50%),
@@ -147,6 +147,12 @@ a{color:inherit; text-decoration:none}
 .onboard ol{margin:0;padding-left:1.2rem;color:var(--muted)}
 .onboard li{margin:10px 0}
 @media (max-width:900px){.tiers,.req{grid-template-columns:1fr}}
+
+.lead-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(7,8,12,.92);border-top:1px solid rgba(232,197,71,.35);backdrop-filter:blur(14px)}
+.lead-bar-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 0;flex-wrap:wrap}
+.lead-bar p{margin:0;color:#c8c8d4;font-size:14px;font-weight:600}
+.lead-bar strong{color:#e8c547}
+
 </style>
 </head>
 <body>
@@ -172,7 +178,7 @@ a{color:inherit; text-decoration:none}
     <h1>EA Gold MT5<br>không <em>fairy tale</em></h1>
     <p class="lead">Học từ seller mạnh trên thị trường: Free/lite kéo lead → Telegram nurture → Rental/Pro rõ giá. Mình làm vậy, nhưng <strong>không bịa kết quả</strong>.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Vào Telegram Lab</a>
+      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Comment DEMO — check broker free</a>
       <a class="btn btn-ghost" href="https://www.mql5.com/en/users/khoaphan0511/seller">Seller MQL5</a>
       <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Free Scalper</a>
     </div>
@@ -310,8 +316,27 @@ a{color:inherit; text-decoration:none}
 </section>
 </main>
 
+
+<section class="section" id="lead-sprint">
+  <div class="container">
+    <p class="eyebrow">Ưu tiên 3 giờ</p>
+    <h2>Inbox demo — check broker miễn phí 15 phút</h2>
+    <p class="sub">Không fairy tale. Gửi <strong>DEMO</strong> trên Telegram Lab: broker + loại acc. Mình check spread lúc tin + risk %. Khi Market mở: ưu tiên rental cho người đã check.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Comment DEMO trên Telegram</a>
+      <a class="btn btn-ghost" href="https://www.mql5.com/en/market/product/187881">Tải Free Scalper trước</a>
+    </div>
+  </div>
+</section>
+
 <footer class="container foot">
   <div>© Khoa Phan Gold Lab · khoaphan0511</div>
   <div><a href="https://t.me/khoa_phan_ea_mt5_1">Telegram</a> · <a href="https://x.com/khoaphanmql5">X</a> · <a href="https://www.mql5.com/en/users/khoaphan0511/seller">MQL5</a></div>
 </footer>
+
+<div class="lead-bar"><div class="container lead-bar-inner">
+  <p>Muốn check broker free? Comment <strong>DEMO</strong> trên Telegram Lab.</p>
+  <a class="btn btn-primary" href="https://t.me/khoa_phan_ea_mt5_1">Mở Telegram → DEMO</a>
+</div></div>
+
 </body></html>
